@@ -83,9 +83,17 @@ while True:
 
         case "3":
             print("Calcular la secuencia de Fibonacci en la posición deseada")
-            posicion=int(input("\nIngrese la posicion Fibonacci que desee conocer: "))
 
-            print(f"El numero de Fibonacci en la posición {posicion} es {secuencia_Fibonacci(posicion)}\n")
+            try:
+                posicion=int(input("\nIngrese la posicion Fibonacci que desee conocer: "))
+                if posicion>=0:
+                    print(f"El numero de Fibonacci en la posición {posicion} es {secuencia_Fibonacci(posicion)}\n")
+
+                else:
+                    print("La posición debe ser un entero positivo\n")
+
+            except ValueError:
+                print("El numero debe ser un entero positivo\n")
 
         case "4":
             print("Contar letras dentro de una palabra")
@@ -120,15 +128,29 @@ while True:
 
             texto=input("\nIngrese una cadena de texto: ")
 
-            print(f"El texto invertido es '{invertir_texto(texto)}'\n")
+            if texto.strip()=="":
+                print("Debe ingresar un texto\n")
+
+            elif texto.isdigit():
+                print("No se deben ingresar numeros\n")
+
+            else:
+                print(f"El texto invertido es '{invertir_texto(texto)}'\n")
 
         case "6":
             print("Potencia de un número")
 
-            base=int(input("\nIngrese el número: "))
-            exponente=int(input("Ingrese el exponente: "))
+            try:
+                base=int(input("\nIngrese el número: "))
+                exponente=int(input("Ingrese el exponente: "))
 
-            print(f"La potencia es de {potencia(base,exponente)}\n")
+                if exponente>0:
+                    print(f"La potencia es de {potencia(base,exponente)}\n")
+                else:
+                    print("El exponente debe ser un entero positivo\n")
+
+            except ValueError:
+                print("Se deben ingresar números\n")
 
         case "7":
             print("Saliendo del programa")
